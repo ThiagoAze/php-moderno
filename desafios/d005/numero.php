@@ -30,9 +30,8 @@
 
 
 
-
         <p>
-            <a href="javascript:history.go(-1)"><button>Voltar</button></a>
+            <button onclick="javascript:history.go(-1)"> &#x2B05 Voltar</button>
         </p>
     </section>
 </body>
