@@ -15,7 +15,6 @@
             $conversao = $num / 5.22;
 
             echo "Seus R$ ". number_format($num, 2, ',', '.') ." equivalem a <strong>US$ ". number_format($conversao, 2) ." </strong>";
-            // echo `Seus R$ $num equivalem a <strong>US$ $conversao </strong>`;
             echo '<p><strong>* Cotação fixa de R$ 5,22</strong> informada diretamente no código.</p>'
         ?>
         

@@ -11,11 +11,26 @@
         <h1>Conversor de Moedas v1.0</h1>
         
         <?php 
-            $num = $_GET['num'] ?? null;
-            $conversao = $num / 5.22;
+            // Pegando data da semana
+            $dataInicio = date('m-d-Y', strtotime("-7 days"));
+            $dataFim = date('m-d-Y'); //O dia de hoje menos 7 dias
 
-            echo "Seus R$ ". number_format($num, 2, ',', '.') ." equivalem a <strong>US$ ". number_format($conversao, 2) ." </strong>";
-            // echo `Seus R$ $num equivalem a <strong>US$ $conversao </strong>`;
+            // API do banco central do Brasil com cotação da semana
+            $url = 'https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial=\''.$dataInicio.'\'&@dataFinalCotacao=\''.$dataFim.'\'&$top=1&$orderby=dataHoraCotacao%20desc&$format=json&$select=cotacaoCompra,dataHoraCotacao';
+
+            // Tratando dados em json, true é pra deixar em vetor/array
+            $dados = json_decode(file_get_contents($url), true);
+
+            // Pegando valor da cotação
+            $cotacao = $dados["value"][0]["cotacaoCompra"];
+
+            // Pegando o valor do real
+            $num = $_GET['num'] ?? null;
+
+            // Convertendo valores
+            $conversao = $num / $cotacao;
+
+            echo "Seus R$ ". number_format($num, 2, ',', '.') ." equivalem a <strong>US$ ". number_format($conversao, 2, ',', '.') ." </strong>";
             echo '<p>Cotação obtida diretamente do site do <a href="https://www.bcb.gov.br"><strong><u>Banco Central do Brasil</u></strong></a></p>'
         ?>
         
