@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section>
+    <main>
         <h1>Analisador de Número Real</h1>
         
         <form action="numero.php" method="get">
@@ -16,6 +16,6 @@
 
             <input type="submit" value="Analisar">
         </form>
-    </section>
+    </main>
 </body>
 </html>
