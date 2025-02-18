@@ -14,7 +14,6 @@
         
         $semanas = floor($tempo / 604800); // 7 * 24 * 60 * 60
         $tempoRestante = $tempo % 604800;
-        var_dump($tempoRestante);
 
         $dias = floor($tempoRestante / 86400); //24 * 60 * 60
         $tempoRestante %= 86400;
