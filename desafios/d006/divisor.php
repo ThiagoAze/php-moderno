@@ -8,13 +8,12 @@
 </head>
 <body>
     <?php 
-    // Pegando valores dos inputs
+        // Pegando valores dos inputs
         $dividendo = $_GET['dividendo'] ?? 0;
         $divisor = $_GET['divisor'] ?? 1;
         $resto = 0;
         
         $resultado = floor($dividendo / $divisor);
-        var_dump($resultado);
         
         // Calculando resultados se existir valores
         if($dividendo != 0 && $divisor != 1){
@@ -25,13 +24,12 @@
         <h1>Anatomia de uma Divisão</h1>
         <form action="<?= $_SERVER['PHP_SELF']?>" method="get">
             <label for="idividendo">Dividendo</label>
-            <input type="number" name="dividendo" id="idividendo" value="<?=$dividendo?>">
+            <input type="number" name="dividendo" id="idividendo" min="0" value="<?=$dividendo?>">
             
             <label for="idivisor">Divisor</label>
-            <input type="number" name="divisor" id="idivisor" value="<?=$divisor?>">
+            <input type="number" name="divisor" id="idivisor" min="1" value="<?=$divisor?>">
             <input type="submit" value="Analisar">
         </form>
-        
     </main>
 
     <section>
