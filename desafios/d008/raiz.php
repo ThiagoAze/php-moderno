@@ -8,7 +8,10 @@
 </head>
 <body>
     <?php 
+        // Pegando número para cálculo
         $num = $_GET['numero'] ?? 0;
+
+        // Calculando raizes quadrada e cúbica
         $raiz_quad = sqrt($num);
         $raiz_cub = pow($num, 1/3);
     ?>
@@ -27,8 +30,8 @@
         <h2>Resultado Final</h2>
             <?php 
                 echo "Analisando o <strong>número $num</strong>, temos: <br>";
-                echo "<ul><li>A sua raiz quadrada é <strong>".number_format($raiz_quad, '3',',', '.')."</strong></li>";
-                echo "<li>A sua raiz cúbica é <strong>".number_format($raiz_cub, '3',',', '.')."</strong></li></ul>";
+                echo "<ul><li>A sua raiz quadrada é <strong>". number_format($raiz_quad, '3',',','.') ."</strong></li>";
+                echo "<li>A sua raiz cúbica é <strong>". number_format($raiz_cub,'3',',','.') ."</strong></li></ul>";
             ?>
     </section>
 
