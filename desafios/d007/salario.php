@@ -9,32 +9,28 @@
 <body>
     <?php 
         $salario = $_GET['salario'] ?? 0;
-        $quant_salario = 0;
-        $resto_salario = 0.00;
+        $salario_min = 1380.60;
 
-        // Calculando se tiver o valor de salário
-        if($salario != 0){ 
-            // Pegando quantidade de salários minímos
-            $quant_salario = floor ($salario / 1380);
-            // Pegando resto da quantidade de salários minímos
-            $resto_salario = (($quant_salario * 1380) - $salario) * -1; 
-        }
+        // Pegando quantidade de salários minímos
+        $quant_salario = floor($salario / $salario_min);
+        // Pegando resto da quantidade de salários minímos
+        $resto_salario = ($salario % $salario_min); 
+        
     ?>
     <main>
         <h1>Informe seu salário</h1>
         <form action="<?= $_SERVER['PHP_SELF']?>" method="get">
             <label for="isalario">Salarío (R$)</label>
-            <input type="number" name="salario" id="isalario" value="<?=$salario?>" required>
-            <p>Considerando o salário mínimo de <strong>R$1.380,00</strong></p>
+            <input type="number" name="salario" id="isalario" min="0" step="0.01" value="<?=$salario?>" required>
+            <p>Considerando o salário mínimo de <strong>R$<?=number_format($salario_min,'2',',','.')?></strong></p>
             <input type="submit" value="Calcular">
         </form>
-        
     </main>
 
     <section>
         <h2>Resultado Final</h2>
         <?php 
-            echo "Quem recebe salário de R$1.380,00 ganha <strong>$quant_salario salários mínimos</strong> + R$ ". number_format($resto_salario, '2', ',', '.').".";
+            echo "Quem recebe salário de R$".number_format($salario,'2',',','.')." ganha <strong>$quant_salario salários mínimos</strong> + R$ ". number_format($resto_salario, '2', ',', '.').".";
         ?>
     </section>
 
