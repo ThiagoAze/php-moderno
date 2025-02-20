@@ -18,19 +18,19 @@
         $media = ($v1 + $v2) / 2;
 
         // Calculando média ponderada
-        $media_pond = (($v1 * $p1) + ($v2 * $p2)) / ($p1 + $p2);
+        $media_pond = ($v1 * $p1 + $v2 * $p2) / ($p1 + $p2);
     ?>
     <main>
         <h1>Médias Aritméticas</h1>
         <form action="<?= $_SERVER['PHP_SELF']?>" method="get">
             <label for="v1">1° Valor</label>
-            <input type="number" name="v1" id="v1" value="<?=$v1?>">
+            <input type="number" name="v1" id="v1" value="<?=$v1?>" required>
             <label for="p1">1° Peso</label>
-            <input type="number" name="p1" id="p1" value="<?=$p1?>">
+            <input type="number" name="p1" id="p1" min="0" value="<?=$p1?>" required>
             <label for="v2">2° Valor</label>
-            <input type="number" name="v2" id="v2" value="<?=$v2?>">
+            <input type="number" name="v2" id="v2" value="<?=$v2?>" required>
             <label for="p2">2° Peso</label>
-            <input type="number" name="p2" id="p2" value="<?=$p2?>">
+            <input type="number" name="p2" id="p2" min="0" value="<?=$p2?>" required>
 
             <input type="submit" value="Calcular Médias">
         </form>
