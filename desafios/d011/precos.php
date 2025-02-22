@@ -8,17 +8,19 @@
 </head>
 <body>
     <?php 
-        $preco = $_GET['preco']?? 0;
+        // Pegando preço e porcentagem do produto
+        $preco = $_GET['preco'] ?? 0;
         $perc = $_GET['percentual'] ?? 0;
 
+        // Calculando resultado
         $resul = ($preco * $perc / 100) + $preco;
     ?>
     <main>
         <h1>Reajustador de Preços</h1>
         <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
             <label for="preco">Preço do Produto (R$)</label>
-            <input type="number" name="preco" id="preco" step="0.1" value="<?=$preco?>">
-            <label for="percentual">Qual será o percentual de reajuste? (<strong><output id="perc"><?=$perc?></output>%</strong>)</label>
+            <input type="number" name="preco" id="preco" min="0.10" step="0.1" value="<?=$preco?>">
+            <label for="percentual">Qual será o percentual de reajuste? (<strong><output id="perc"><?=$perc?></output>%</strong>)</label> <!-- Mostrando na tela a porcentagem em tempo real do range -->
             <input type="range" name="percentual" id="percentual" value="<?=$perc?>" min="0" max="100" oninput="perc.innerHTML = Number(percentual.value)">
             
             <input type="submit" value="Reajustar">
